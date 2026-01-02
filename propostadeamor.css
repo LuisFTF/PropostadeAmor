@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-size: 1000px;
+  background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
+  background-position: center center;
+}
+.paper {
+  background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
+  background-size: 500px;
+  background-position: center center;
+  padding: 20px 100px;
+  transform: rotateZ(-5deg);
+  box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
+  /* inicialmente invisível até o JS posicionar corretamente */
+  opacity: 0;
+  transition: opacity 200ms ease, transform 200ms ease;
+  position: absolute;
+  touch-action: none; /* Impede o scroll do navegador ao tocar no papel */
+  user-select: none;  /* Impede a seleção de texto durante o arraste */
+}
+
+.paper.visible {
+  opacity: 1;
+}
+
+.stage {
+  width: 1200px;
+  height: 900px;
+  position: relative;
+  /* fundo decorativo da área onde os papéis ficam
+     Coloque um arquivo `stage-bg.jpg` na mesma pasta para usar localmente. */
+  background-image: url('stage-bg.jpg'), url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fbfbfb;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12) inset;
+}
+.paper.heart {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  padding: 0;
+  border-radius: 50%;
+}
+.paper.image {
+  padding: 10px;
+  /* garantir área fixa para imagens e cortar overflow se necessário */
+  width: auto;
+  height: 320px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 24px;
+}
+.paper.image p {
+  font-size: 30px;
+}
+img {
+  width: auto;
+  height: auto;
+  /* limitar à área do papel e manter proporção */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  user-select: none;
+  display: block;
+}
+.paper.heart::after {
+  content: "";
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: 150px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+}
+.paper.red {
+/*   filter: hue-rotate(90deg); */
+}
+.paper:nth-of-type(3n) {
+  background-position: left top;
+}
+.paper:nth-of-type(3n) {
+/*   filter: hue-rotate(200deg); */
+}
+p {
+  font-family: 'Zeyada';
+  font-size: 36px;
+  color: rgb(0,0,100);
+  opacity: 0.95;
+  user-select: none;
+}
+
+.paper.image p {
+  font-size: 26px;
+  margin: 0;
+  line-height: 1.35;
+  width: 60%;
+  text-align: left;
+}
+
+.paper.image img {
+  width: auto;
+  height: 100%;
+  max-width: 38%;
+  object-fit: cover;
+}
